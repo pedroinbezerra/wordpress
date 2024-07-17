@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - "8000:80"
+    environment:
+      WORDPRESS_DB_HOST: ${MYSQL_HOST}:3306     # Substitua pelo host do seu banco
+      WORDPRESS_DB_USER: ${MYSQL_USER}          # Substitua pelo usuário do banco
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}  # Substitua pela senha do banco
+      WORDPRESS_DB_NAME: ${MYSQL_DB_NAME}       # Substitua pelo nome do banco
+    volumes:
+      - wordpress_data:/var/www/html
+
+volumes:
+  wordpress_data:
